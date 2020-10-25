@@ -6,8 +6,7 @@ abstract class Persona{
     protected $email;
     protected $password;
 
-    function __construct($id,$email,$password) {
-        $this->id=$id;
+    function __construct($email,$password) {
         $this->email=$email;
         $this->password=$password;
     }

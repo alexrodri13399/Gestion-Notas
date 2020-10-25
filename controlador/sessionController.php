@@ -1,7 +1,7 @@
 <?php
-require_once '../model/user.php';
+require_once '../modelo/admin.php';
 session_start();
-if (!isset($_SESSION['user'])) {
-    header('Location:../index.php');
+if (!isset($_SESSION['admin'])) {
+    header('Location:../vista/login.php');
 }
-echo '<div class="logo"><h1>Bienvenido '.$_SESSION['user']->getName().'</h1><h1 style="float: right;"><a href="../controller/logoutController.php">Logout</a></h1></div>';
+echo '<div class="logo"><h1>Bienvenido '.$_SESSION['admin']->getEmail().'</h1><h1 style="float: right;"><a href="../controlador/logoutController.php">Logout</a></h1></div>';

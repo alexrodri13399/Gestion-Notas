@@ -1,6 +1,6 @@
 <?php
 
-include 'persona.php';
+require_once 'persona.php';
 class Alumno extends Persona{
     //es private porque es un hijo
     private $nombre_alumno;
@@ -8,8 +8,8 @@ class Alumno extends Persona{
     private $apellidom_alumno;
     private $grupo_alumno;
 
-    function __construct($id,$email,$password,$nombre_alumno,$apellidop_alumno,$apellidom_alumno,$grupo_alumno) {
-        parent:: __construct($id,$email,$password);
+    function __construct($nombre_alumno,$apellidop_alumno,$apellidom_alumno,$grupo_alumno,$email,$password) {
+        parent:: __construct($email,$password);
         //lo ponemos aqui porque no esta en el constructor de persona (padre) y como lo edera por la clase lo ponemos asi el DNI.
         $this->nombre_alumno=$nombre_alumno;
         $this->apellidop_alumno=$apellidop_alumno;
