@@ -76,6 +76,31 @@ class AlumnoDao{
             $sentencia->bindParam(5,$email);
             $sentencia->bindParam(6,$psswd);
             $sentencia->execute();
+            $id_alumno = $this->pdo->lastInsertId();
+            $query1 = "INSERT INTO `tbl_nota` (`nom_asignatura_nota`, `nota`, `id_alumno`) VALUES (?,?,?);";
+            $sentencia1=$this->pdo->prepare($query1);
+            $nombre="Matemáticas";
+            $nota=0;
+            $sentencia1->bindParam(1,$nombre);
+            $sentencia1->bindParam(2,$nota);
+            $sentencia1->bindParam(3,$id_alumno);
+            $sentencia1->execute();
+            $query2 = "INSERT INTO `tbl_nota` (`nom_asignatura_nota`, `nota`, `id_alumno`) VALUES (?,?,?);";
+            $sentencia2=$this->pdo->prepare($query2);
+            $nombre="Física";
+            $nota=0;
+            $sentencia2->bindParam(1,$nombre);
+            $sentencia2->bindParam(2,$nota);
+            $sentencia2->bindParam(3,$id_alumno);
+            $sentencia2->execute();
+            $query3 = "INSERT INTO `tbl_nota` (`nom_asignatura_nota`, `nota`, `id_alumno`) VALUES (?,?,?);";
+            $sentencia3=$this->pdo->prepare($query3);
+            $nombre="Programación";
+            $nota=0;
+            $sentencia3->bindParam(1,$nombre);
+            $sentencia3->bindParam(2,$nota);
+            $sentencia3->bindParam(3,$id_alumno);
+            $sentencia3->execute();
             $this->pdo->commit();
         } catch (Exception $ex) {
             $this->pdo->rollback();
@@ -91,7 +116,8 @@ class AlumnoDao{
             $id=$_GET['id_alumno'];
             $sentencia->bindParam(1,$id);
             $sentencia->execute();
-            if (mysqli_num_rows(mysqli_query($query))>0) {
+            $numRow=$sentencia->rowCount();
+            if ($numRow>0) {
                 $query = "DELETE FROM `tbl_nota` WHERE `id_alumno` = ?";
                 $sentencia1=$this->pdo->prepare($query);
                 $sentencia1->bindParam(1,$id);
@@ -114,6 +140,15 @@ class AlumnoDao{
             $this->pdo->rollback();
             echo $ex->getMessage();
             }
+    }
+
+    public function lecturamodi($id){
+        $query = "SELECT * FROM tbl_alumno WHERE id_alumno=?";
+        $sentencia=$this->pdo->prepare($query);
+        $sentencia->bindParam(1,$id);
+        $sentencia->execute();
+        $alumno=$sentencia->fetch(PDO::FETCH_ASSOC);
+        return $alumno;
     }
 }
 

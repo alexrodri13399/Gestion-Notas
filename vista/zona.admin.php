@@ -68,6 +68,7 @@ require_once '../controlador/sessionController.php';
 </br>
 <?php
 require_once '../modelo/alumnoDAO.php';
+require_once '../modelo/notaDAO.php';
 if (isset($_GET['id_alumno'])){
     $alumnoDAO = new AlumnoDAO();
     $alumnoDAO->eliminar();
@@ -79,6 +80,9 @@ if (isset($_POST['nombre']) || isset($_POST['apellidop'])) {
     $alumnoDAO = new AlumnoDAO();
     echo $alumnoDAO->read();
 }
+
+$notaDAO = new NotaDAO();
+echo $notaDAO->medias();
 
 ?>
   
