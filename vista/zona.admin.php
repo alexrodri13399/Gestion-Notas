@@ -59,7 +59,7 @@ require_once '../controlador/sessionController.php';
 ?>
 <div class="bloque">
 </br></br>
-<button onclick="location.href='añadir_alumno.php'">Añadir Alumno</button>
+<button onclick="location.href='anadir_alumno.php'">Añadir Alumno</button>
 <button onclick="location.href='estadisticas_notas.php'">Estadísticas Notas</button>
 </br></br>
 <form action="zona.admin.php" method="POST">
