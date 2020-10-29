@@ -10,12 +10,13 @@
             font-family: arial, sans-serif;
             border-collapse: collapse;
             width: 40%;
-            margin-left: 20px;
+            text-align: center;
+            /*margin-left: 20px;*/
+            /*float: left;*/
         }
 
         td, th {
             border: 1px solid #dddddd;
-            text-align: left;
             padding: 8px;
         }
 
@@ -45,18 +46,21 @@
             text-decoration: none;
         }
 
-        form {
-            margin-left: 20px;
+        .bloque {
+            text-align: -webkit-center;
         }
 
     </style>
 </head>
 <body>
+
 <?php
 require_once '../controlador/sessionController.php';
 ?>
+<div class="bloque">
 </br></br>
-<button style="margin-left: 20px;" onclick="location.href='añadir_alumno.php'">Añadir Alumno</button>
+<button onclick="location.href='añadir_alumno.php'">Añadir Alumno</button>
+<button onclick="location.href='estadisticas_notas.php'">Estadísticas Notas</button>
 </br></br>
 <form action="zona.admin.php" method="POST">
   <label>Nombre:</label>
@@ -81,10 +85,8 @@ if (isset($_POST['nombre']) || isset($_POST['apellidop'])) {
     echo $alumnoDAO->read();
 }
 
-$notaDAO = new NotaDAO();
-echo $notaDAO->medias();
-
 ?>
-  
+</div>
+
 </body>
 </html>

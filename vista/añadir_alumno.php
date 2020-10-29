@@ -85,7 +85,8 @@
         <input type="email" name="email" id="email" required><br>
         <label>Contraseña:</label><br>
         <input type="password" name="psswd" id="psswd" required><br>
-        <input type="submit" value="Submit">
+        <input type="submit" value="Enviar">
+        <button onclick="location.href='zona.admin.php'">Volver</button>
       </form> 
     </div>
 </div>

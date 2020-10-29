@@ -23,7 +23,8 @@ class AlumnoDao{
         foreach($lista_alumno as $alumno) {
         $id=$alumno['id_alumno'];
         echo "<tr>";
-        echo "<td><a href='modificar_alumno.php?id_alumno=$id'>Modificar</a> <a href='zona.admin.php?id_alumno=$id'>Eliminar</a></td>";
+        echo "<td><a href='modificar_alumno.php?id_alumno=$id'><img src='../img/lapiz.png' alt='Modificar' style='width:28px;heigth:30px;'></img>    </a>";
+        echo "<a href='zona.admin.php?id_alumno=$id'><img src='../img/borrar.png' alt='Borrar' style='width:30px;heigth:30px;'></img></a></td>";
         echo "<td>{$alumno['nombre_alumno']}</td>";
         echo "<td>{$alumno['apellidop_alumno']}</td>";
         echo "<td>{$alumno['apellidom_alumno']}</td>";
@@ -49,8 +50,8 @@ class AlumnoDao{
         foreach($lista_alumno as $alumno) {
         $id=$alumno['id_alumno'];
         echo "<tr>";
-        echo "<td><a href='modificar_alumno.php?id_alumno=$id'>Modificar</a> <a href='zona.admin.php?id_alumno=$id'>Eliminar</a></td>";
-        echo "<td>{$alumno['nombre_alumno']}</td>";
+        echo "<td><a href='modificar_alumno.php?id_alumno=$id'><img src='../img/lapiz.png' alt='Modificar' style='width:28px;heigth:30px;'></img>    </a>";
+        echo "<a href='zona.admin.php?id_alumno=$id'><img src='../img/borrar.png' alt='Borrar' style='width:30px;heigth:30px;'></img></a></td>";        echo "<td>{$alumno['nombre_alumno']}</td>";
         echo "<td>{$alumno['apellidop_alumno']}</td>";
         echo "<td>{$alumno['apellidom_alumno']}</td>";
         echo "</tr>";

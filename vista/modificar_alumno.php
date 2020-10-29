@@ -102,7 +102,8 @@
           echo "<label>Nota Media</label><br>";
           echo "<input type='text' value='".$notamedia."' disabled><br>";
          ?>
-        <input type="submit" value="Submit">
+        <input type="submit" value="Enviar">
+        <button onclick="location.href='zona.admin.php'">Volver</button>
       </form> 
     </div>
 </div>
