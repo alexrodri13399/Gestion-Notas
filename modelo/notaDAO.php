@@ -52,13 +52,23 @@ class NotaDao{
     }
 
     public function medias(){
+
+        echo "<table>";
+        echo "<tr>";
+        echo "<th>Nota media Matemáticas</th>";
+        echo "<th>Nota media Física</th>";
+        echo "<th>Nota media Programación</th>";
+        echo "</tr>";
+
+        echo "<tr>";
+       
         //Media de mates.
         $query = "SELECT avg(nota) as nota FROM `tbl_nota` WHERE nom_asignatura_nota='Matemáticas';";
         $sentencia=$this->pdo->prepare($query);
         $sentencia->execute();
         $medias1=$sentencia->fetchAll(PDO::FETCH_ASSOC);
         foreach($medias1 as $media1) {
-            echo "<b>Nota media de Matemáticas: ".round($media1['nota'],2)."</b></br>";
+            echo "<td>".round($media1['nota'],2)."</td>";
         }
 
         //Media de fisica.
@@ -67,7 +77,7 @@ class NotaDao{
         $sentencia->execute();
         $medias2=$sentencia->fetchAll(PDO::FETCH_ASSOC);
         foreach($medias2 as $media2) {
-            echo "<b>Nota media de Física: ".round($media2['nota'],2)."</b></br>";
+            echo "<td>".round($media2['nota'],2)."</td>";
         }
 
         //Media de programacion.
@@ -76,33 +86,51 @@ class NotaDao{
         $sentencia->execute();
         $medias3=$sentencia->fetchAll(PDO::FETCH_ASSOC);
         foreach($medias3 as $media3) {
-            echo "<b>Nota media de Programación: ".round($media3['nota'],2)."</b></br>";
+            echo "<td>".round($media3['nota'],2)."</td>";
         }
+        echo "</tr>";
+        echo "</table></br>";
 
+
+        echo "<table>";
+        echo "<tr>";
+        echo "<th>Matéria con mayor nota media</th>";
+        echo "</tr>";
+
+        echo "<tr>";
         //Mejor media.
         $mates=round($media1['nota'],2);
         $fisica=round($media2['nota'],2);
         $programacion=round($media3['nota'],2);
         echo "</br>";
         if (($mates>$fisica)&&($mates>$programacion)){
-            echo "<b>La materia con mayor nota media es Matemáticas.</b></br>";
+            echo "<td>Matemáticas con un ".$mates."</td>";
         } elseif (($fisica>$mates)&&($fisica>$programacion)) {
-            echo "<b>La materia con mayor nota media es Física.</b></br>";
+            echo "<td>Física con un ".$fisica."</td>";
         } else {
-            echo "<b>La materia con mayor nota media es Programación.</b></br>";
+            echo "<td>Programación con un ".$programacion."</td>";
         }
+        echo "</tr>";
+        echo "</table>";
 
+
+        echo "<table>";
+        
+        echo "<tr>";
+        echo "<th colspan='3'>Mejores notas de cada asignatura</th>";
+        echo "</tr>";
         //Alumno con mejor nota de matemáticas.
-        echo "</br>";
         $query = "SELECT tbl_nota.nota, tbl_alumno.nombre_alumno, tbl_alumno.apellidop_alumno, 
         tbl_alumno.apellidom_alumno FROM `tbl_nota` INNER JOIN tbl_alumno ON tbl_alumno.id_alumno=tbl_nota.id_alumno 
         WHERE tbl_nota.nom_asignatura_nota='Matemáticas' order by tbl_nota.nota DESC";
         $sentencia=$this->pdo->prepare($query);
         $sentencia->execute();
         $result=$sentencia->fetch(PDO::FETCH_ASSOC);
-        echo "<b>La mejor nota de Matemáticas es de ".$result['nombre_alumno']." ".$result['apellidop_alumno']." 
-        ".$result['apellidom_alumno']." con un ".$result['nota']."</b>";
-
+        echo "<tr>";
+        echo "<td>Matemáticas</td>";
+        echo "<td>".$result['nombre_alumno']." ".$result['apellidop_alumno']." ".$result['apellidom_alumno']."</td>";
+        echo "<td>".$result['nota']."</td>";
+        echo "</tr>";
         //Alumno con mejor nota de física.
         echo "</br>";
         $query = "SELECT tbl_nota.nota, tbl_alumno.nombre_alumno, tbl_alumno.apellidop_alumno, 
@@ -111,8 +139,11 @@ class NotaDao{
         $sentencia=$this->pdo->prepare($query);
         $sentencia->execute();
         $result=$sentencia->fetch(PDO::FETCH_ASSOC);
-        echo "<b>La mejor nota de Física es de ".$result['nombre_alumno']." ".$result['apellidop_alumno']." 
-        ".$result['apellidom_alumno']." con un ".$result['nota']."</b>";
+        echo "<tr>";
+        echo "<td>Física</td>";
+        echo "<td>".$result['nombre_alumno']." ".$result['apellidop_alumno']." ".$result['apellidom_alumno']."</td>";
+        echo "<td>".$result['nota']."</td>";
+        echo "</tr>";
 
         //Alumno con mejor nota de programación.
         echo "</br>";
@@ -122,9 +153,12 @@ class NotaDao{
         $sentencia=$this->pdo->prepare($query);
         $sentencia->execute();
         $result=$sentencia->fetch(PDO::FETCH_ASSOC);
-        echo "<b>La mejor nota de Programación es de ".$result['nombre_alumno']." ".$result['apellidop_alumno']." 
-        ".$result['apellidom_alumno']." con un ".$result['nota']."</b>";
-        
+        echo "<tr>";
+        echo "<td>Programación</td>";
+        echo "<td>".$result['nombre_alumno']." ".$result['apellidop_alumno']." ".$result['apellidom_alumno']."</td>";
+        echo "<td>".$result['nota']."</td>";
+        echo "</tr>";
+        echo "</table>";
     }
 
 
