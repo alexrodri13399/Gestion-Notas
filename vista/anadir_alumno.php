@@ -72,7 +72,7 @@
 <h2 style="text-align: center;">Añadir Alumno</h2>
 <div class="row">
     <div class="form">
-      <form action="añadir_alumno.php" method="POST" onsubmit="return validacionForm1()">
+      <form action="anadir_alumno.php" method="POST" onsubmit="return validacionForm1()">
         <label>Nombre:</label><br>
         <input type="text" name="nombre" id="nombre" required><br>
         <label>1r apellido:</label><br>
